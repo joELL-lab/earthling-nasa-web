@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About NASA — Vision, History &amp; Field Centers</title>
+  <meta name="description" content="Discover NASA's mission, core values, historic timeline from 1958 to the Artemis era, NASA field centers, and Modern Figures pioneers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/nasa-tokens.css" />
+  <link rel="stylesheet" href="assets/css/nasa-animations.css" />
+  <link rel="stylesheet" href="assets/css/nasa-layout.css" />
+  <link rel="stylesheet" href="assets/css/nasa-pages.css" />
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <div class="orbital-scroll-progress" aria-hidden="true">
+    <div class="orbital-scroll-progress__bar" id="orbitalScrollProgress"></div>
+  </div>
+
+  <canvas class="cosmic-starfield" id="cosmicStarfield" aria-hidden="true"></canvas>
+
+  <div class="site-wrapper">
+    <header class="nasa-navbar" id="nasaNavbar">
+      <div class="nasa-container nasa-navbar__inner">
+        <a href="index.html" class="nasa-brand" aria-label="NASA Home">
+          <svg class="nasa-brand__svg" viewBox="0 0 112 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 25V5h4.2l11.6 14.5V5H24v20h-4.1L8.2 10.4V25H4Zm29.5 0L43 5h4.3L56.8 25h-4.4l-2-4.6H39.9l-2 4.6h-4.4Zm8-8.2h7.3L45.1 8.8l-3.6 8Zm20.2 8.5c-4.9 0-8.4-2.3-8.8-6.2h4.2c.4 1.9 2.2 2.9 4.7 2.9 2.6 0 4.2-1 4.2-2.6 0-1.5-1.2-2.2-4.8-2.9-4.5-.9-7.6-2.2-7.6-6.1 0-3.5 3.2-5.9 7.9-5.9 4.7 0 8 2.2 8.3 5.9h-4.2c-.3-1.6-1.8-2.6-4.1-2.6-2.3 0-3.8.9-3.8 2.4 0 1.4 1.1 2.1 4.6 2.8 4.6.9 7.8 2.2 7.8 6.2 0 3.8-3.4 6.1-8.4 6.1Zm14.1-.3L85.3 5h4.3L99.1 25h-4.4l-2-4.6H82.2l-2 4.6h-4.4Zm8-8.2h7.3l-3.7-8-3.6 8Z" fill="#FFFFFF"/>
+            <path d="M2 27.5C32 19 72 11 110 13.5" stroke="#60A5FA" stroke-width="1.3" stroke-linecap="round" opacity="0.65"/>
+          </svg>
+          <span class="nasa-brand__sub">Portal</span>
+        </a>
+
+        <div class="nasa-nav__right">
+          <nav aria-label="Primary Navigation">
+            <ul class="nasa-nav__list">
+              <li><a class="nasa-nav__link" href="index.html">Home</a></li>
+              <li><a class="nasa-nav__link" href="features.html">Features</a></li>
+              <li><a class="nasa-nav__link" href="projects.html">Projects</a></li>
+              <li><a class="nasa-nav__link is-active" href="about-us.html">About Us</a></li>
+              <li><a class="nasa-nav__link" href="contact-us.html">Contact Us</a></li>
+              <span class="nasa-nav__underline" id="navUnderline" aria-hidden="true"></span>
+            </ul>
+          </nav>
+
+          <div class="nasa-nav__actions">
+            <button type="button" class="nasa-icon-btn" data-open-search aria-label="Quick search portal">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+            <button type="button" class="nasa-icon-btn" data-share-page aria-label="Share this page">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </button>
+            <button type="button" class="nasa-mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="nasa-mobile-drawer" id="mobileNavDrawer">
+      <div class="nasa-mobile-drawer__links">
+        <a class="nasa-mobile-drawer__link" href="index.html">Home</a>
+        <a class="nasa-mobile-drawer__link" href="features.html">Features</a>
+        <a class="nasa-mobile-drawer__link" href="projects.html">Projects</a>
+        <a class="nasa-mobile-drawer__link is-active" href="about-us.html">About Us</a>
+        <a class="nasa-mobile-drawer__link" href="contact-us.html">Contact Us</a>
+      </div>
+    </div>
+
+    <main id="mainContent">
+      <section class="subpage-hero">
+        <img class="subpage-hero__bg" src="https://images-assets.nasa.gov/image/iss059e002710/iss059e002710~medium.jpg" alt="NASA astronaut conducting a spacewalk above Earth" />
+        <div class="subpage-hero__overlay"></div>
+        <div class="nasa-container subpage-hero__content">
+          <div class="subpage-hero__eyebrow hero-anim-live">ESTABLISHED JULY 29, 1958</div>
+          <h1 class="subpage-hero__title hero-anim-title">About NASA — For the Benefit of All</h1>
+          <p class="subpage-hero__subtitle hero-anim-search">
+            For nearly seven decades, NASA has united scientists, engineers, astronauts, and global partners to unlock the secrets of Earth, our solar system, and the deep universe.
+          </p>
+        </div>
+      </section>
+
+      <!-- Vision, Mission & Core Values -->
+      <section class="about-section">
+        <div class="nasa-container">
+          <div class="about-section__heading" data-reveal="fade-up">
+            <div class="about-section__eyebrow">VISION &amp; GUIDING PRINCIPLES</div>
+            <h2 class="about-section__title">Mission &amp; Core Values</h2>
+            <p style="color:var(--text-secondary);max-width:740px;">
+              <strong>Vision:</strong> Exploring the secrets of the universe for the benefit of all. &nbsp;•&nbsp;
+              <strong>Mission:</strong> NASA explores the unknown in air and space, innovates for the benefit of humanity, and inspires the world through discovery.
+            </p>
+          </div>
+
+          <div class="values-grid">
+            <article class="value-card" data-reveal="fade-up" data-delay="40">
+              <div class="value-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3 class="value-card__title">Safety</h3>
+              <p class="value-card__desc">Unwavering commitment to crew, spacecraft, and public safety across every countdown and mission phase.</p>
+            </article>
+
+            <article class="value-card" data-reveal="fade-up" data-delay="90">
+              <div class="value-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <h3 class="value-card__title">Integrity</h3>
+              <p class="value-card__desc">Open scientific transparency, rigorous peer review, and accountability in every discovery we publish.</p>
+            </article>
+
+            <article class="value-card" data-reveal="fade-up" data-delay="140">
+              <div class="value-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <h3 class="value-card__title">Teamwork</h3>
+              <p class="value-card__desc">Collaborating across NASA centers, international space agencies, universities, and industry partners.</p>
+            </article>
+
+            <article class="value-card" data-reveal="fade-up" data-delay="190">
+              <div class="value-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <h3 class="value-card__title">Excellence</h3>
+              <p class="value-card__desc">Pushing precision engineering to land rovers across interplanetary distances and operate at L2.</p>
+            </article>
+
+            <article class="value-card" data-reveal="fade-up" data-delay="240">
+              <div class="value-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <h3 class="value-card__title">Inclusion</h3>
+              <p class="value-card__desc">Bringing diverse perspectives and global STEM talent together so spaceflight reflects all of humanity.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scroll-Animated Vertical Timeline -->
+      <section class="about-section" style="background:rgba(13,17,25,0.65);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);">
+        <div class="nasa-container">
+          <div class="about-section__heading" style="text-align:center;" data-reveal="fade-up">
+            <div class="about-section__eyebrow">CHRONOLOGY OF EXPLORATION</div>
+            <h2 class="about-section__title">Decades of Cosmic Milestones</h2>
+          </div>
+
+          <div class="nasa-timeline" id="nasaTimeline">
+            <div class="nasa-timeline__track" aria-hidden="true">
+              <div class="nasa-timeline__progress" id="nasaTimelineProgress"></div>
+            </div>
+
+            <article class="timeline-item" data-reveal="fade-up">
+              <span class="timeline-item__node" aria-hidden="true"></span>
+              <div class="timeline-item__year">1958</div>
+              <h3 class="timeline-item__title">NASA Founded</h3>
+              <p class="timeline-item__desc">The National Aeronautics and Space Act takes effect, uniting aeronautical research laboratories to launch America’s civilian space program.</p>
+            </article>
+
+            <article class="timeline-item" data-reveal="fade-up">
+              <span class="timeline-item__node" aria-hidden="true"></span>
+              <div class="timeline-item__year">1969</div>
+              <h3 class="timeline-item__title">Apollo 11 — First Steps on the Moon</h3>
+              <p class="timeline-item__desc">Neil Armstrong and Buzz Aldrin land the Eagle lunar module at Tranquility Base while Michael Collins orbits above, fulfilling humanity’s lunar voyage.</p>
+            </article>
+
+            <article class="timeline-item" data-reveal="fade-up">
+              <span class="timeline-item__node" aria-hidden="true"></span>
+              <div class="timeline-item__year">1981</div>
+              <h3 class="timeline-item__title">Space Shuttle Era Begins</h3>
+              <p class="timeline-item__desc">Space Shuttle Columbia launches on STS-1, introducing reusable winged spacecraft that deployed satellites, Spacelab, and the Hubble Space Telescope.</p>
+            </article>
+
+            <article class="timeline-item" data-reveal="fade-up">
+              <span class="timeline-item__node" aria-hidden="true"></span>
+              <div class="timeline-item__year">1990</div>
+              <h3 class="timeline-item__title">Hubble Space Telescope Deployed</h3>
+              <p class="timeline-item__desc">Placed above Earth’s turbulent atmosphere, Hubble transforms astronomy—dating the cosmos and photographing galaxies near the edge of observable time.</p>
+            </article>
+
+            <article class="timeline-item" data-reveal="fade-up">
+              <span class="timeline-item__node" aria-hidden="true"></span>
+              <div class="timeline-item__year">1998</div>
+              <h3 class="timeline-item__title">International Space Station Assembly</h3>
+              <p class="timeline-item__desc">Global partners join Zarya and Unity modules in low-Earth orbit, establishing a continuous human presence in space since November 2000.</p>
+            </article>
+
+            <article class="timeline-item" data-reveal="fade-up">
+              <span class="timeline-item__node" aria-hidden="true"></span>
+              <div class="timeline-item__year">2021</div>
+              <h3 class="timeline-item__title">James Webb Space Telescope Launch</h3>
+              <p class="timeline-item__desc">Unfolding a 6.5-meter gold-coated infrared mirror at Sun–Earth L2, Webb captures cosmic dawn, stellar nurseries, and distant exoplanets.</p>
+            </article>
+
+            <article class="timeline-item" data-reveal="fade-up">
+              <span class="timeline-item__node" aria-hidden="true"></span>
+              <div class="timeline-item__year">ARTEMIS ERA</div>
+              <h3 class="timeline-item__title">Return to the Moon &amp; Path to Mars</h3>
+              <p class="timeline-item__desc">Powered by SLS and Orion, Artemis establishes sustainable lunar exploration at the Moon’s south pole as a proving ground for human missions to Mars.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- NASA Field Centers -->
+      <section class="about-section">
+        <div class="nasa-container">
+          <div class="about-section__heading" data-reveal="fade-up">
+            <div class="about-section__eyebrow">OPERATIONS NETWORK</div>
+            <h2 class="about-section__title">NASA Field Centers</h2>
+          </div>
+
+          <div class="centers-grid">
+            <article class="center-card tilt-card" data-reveal="fade-up" data-delay="60">
+              <div class="center-card__img-wrap">
+                <img src="https://images-assets.nasa.gov/image/NHQ202211160002/NHQ202211160002~medium.jpg" alt="Kennedy Space Center Launch Complex" loading="lazy" />
+              </div>
+              <div class="center-card__body">
+                <div class="center-card__loc">Merritt Island, Florida</div>
+                <h3 class="center-card__name">Kennedy Space Center</h3>
+                <p class="center-card__desc">NASA’s premier multi-user spaceport—launching Artemis SLS rockets, crewed commercial flights, and deep-space planetary probes.</p>
+              </div>
+            </article>
+
+            <article class="center-card tilt-card" data-reveal="fade-up" data-delay="120">
+              <div class="center-card__img-wrap">
+                <img src="https://images-assets.nasa.gov/image/NHQ20260115_admin_0001/NHQ20260115_admin_0001~large.jpg" alt="Johnson Space Center Mission Control" loading="lazy" />
+              </div>
+              <div class="center-card__body">
+                <div class="center-card__loc">Houston, Texas</div>
+                <h3 class="center-card__name">Johnson Space Center</h3>
+                <p class="center-card__desc">Home to Mission Control Center and the NASA Astronaut Corps, leading human spaceflight operations, Orion, and ISS expeditions.</p>
+              </div>
+            </article>
+
+            <article class="center-card tilt-card" data-reveal="fade-up" data-delay="180">
+              <div class="center-card__img-wrap">
+                <img src="https://images-assets.nasa.gov/image/PIA23151/PIA23151~medium.jpg" alt="Jet Propulsion Laboratory cleanroom rover hardware" loading="lazy" />
+              </div>
+              <div class="center-card__body">
+                <div class="center-card__loc">Pasadena, California</div>
+                <h3 class="center-card__name">Jet Propulsion Laboratory</h3>
+                <p class="center-card__desc">Lead center for robotic solar system exploration—building Perseverance, Europa Clipper, Juno, Voyager, and operating the Deep Space Network.</p>
+              </div>
+            </article>
+
+            <article class="center-card tilt-card" data-reveal="fade-up" data-delay="240">
+              <div class="center-card__img-wrap">
+                <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001653/GSFC_20171208_Archive_e001653~medium.jpg" alt="Goddard Space Flight Center cleanroom" loading="lazy" />
+              </div>
+              <div class="center-card__body">
+                <div class="center-card__loc">Greenbelt, Maryland</div>
+                <h3 class="center-card__name">Goddard Space Flight Center</h3>
+                <p class="center-card__desc">Hub for Earth science satellites, heliophysics, and flagship space observatories including Hubble and the James Webb Space Telescope.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modern Figures & Pioneers Spotlight -->
+      <section class="about-section" style="padding-top:12px;">
+        <div class="nasa-container">
+          <div class="about-section__heading" data-reveal="fade-up">
+            <div class="about-section__eyebrow">PEOPLE BEHIND THE MISSIONS</div>
+            <h2 class="about-section__title">Modern Figures &amp; Pioneers</h2>
+          </div>
+
+          <div class="pioneers-grid">
+            <article class="pioneer-card tilt-card" data-reveal="fade-up" data-delay="60">
+              <img class="pioneer-card__img" src="https://images-assets.nasa.gov/image/LRC-1966-B701_P-06717/LRC-1966-B701_P-06717~medium.jpg" alt="Katherine Johnson at NASA Langley Research Center" loading="lazy" />
+              <div class="pioneer-card__body">
+                <div class="pioneer-card__role">Langley Research Center • Orbital Mechanics</div>
+                <h3 class="pioneer-card__name">Katherine Johnson</h3>
+                <p class="pioneer-card__bio">Pioneering NASA mathematician whose orbital trajectory calculations proved vital to Mercury, Apollo 11 lunar rendezvous, and the Space Shuttle.</p>
+              </div>
+            </article>
+
+            <article class="pioneer-card tilt-card" data-reveal="fade-up" data-delay="120">
+              <img class="pioneer-card__img" src="https://images-assets.nasa.gov/image/iss059e001095/iss059e001095~medium.jpg" alt="NASA Astronaut Christina Koch aboard the ISS" loading="lazy" />
+              <div class="pioneer-card__body">
+                <div class="pioneer-card__role">Artemis II Mission Specialist • Astronaut</div>
+                <h3 class="pioneer-card__name">Christina Koch</h3>
+                <p class="pioneer-card__bio">Holder of the longest single spaceflight by a woman (328 days) and participant in the first all-female spacewalk, now assigned to fly around the Moon on Artemis II.</p>
+              </div>
+            </article>
+
+            <article class="pioneer-card tilt-card" data-reveal="fade-up" data-delay="180">
+              <img class="pioneer-card__img" src="https://images-assets.nasa.gov/image/iss063e052528/iss063e052528~medium.jpg" alt="NASA Flight Operations and Microgravity Researchers" loading="lazy" />
+              <div class="pioneer-card__body">
+                <div class="pioneer-card__role">Mission Control &amp; Robotics Teams</div>
+                <h3 class="pioneer-card__name">Next-Gen Mission Engineers</h3>
+                <p class="pioneer-card__bio">Thousands of flight controllers, software architects, and planetary scientists designing autonomous Mars navigation and deep-space optical downlinks.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Night Rocket Launch Footer -->
+    <footer class="nasa-footer">
+      <img class="nasa-footer__bg" src="https://images-assets.nasa.gov/image/NHQ202211160208/NHQ202211160208~medium.jpg" alt="Night rocket launch illuminating exhaust clouds" loading="lazy" />
+      <div class="nasa-footer__overlay"></div>
+      <div class="nasa-footer__plume-glow launch-plume-glow" aria-hidden="true"></div>
+      <canvas class="nasa-footer__embers" id="footerEmbersCanvas" aria-hidden="true"></canvas>
+
+      <div class="nasa-footer__bar">
+        <div class="nasa-container nasa-footer__bar-inner">
+          <div class="nasa-footer__brand-group">
+            <svg class="nasa-brand__svg" style="height:19px;" viewBox="0 0 112 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 25V5h4.2l11.6 14.5V5H24v20h-4.1L8.2 10.4V25H4Zm29.5 0L43 5h4.3L56.8 25h-4.4l-2-4.6H39.9l-2 4.6h-4.4Zm8-8.2h7.3L45.1 8.8l-3.6 8Zm20.2 8.5c-4.9 0-8.4-2.3-8.8-6.2h4.2c.4 1.9 2.2 2.9 4.7 2.9 2.6 0 4.2-1 4.2-2.6 0-1.5-1.2-2.2-4.8-2.9-4.5-.9-7.6-2.2-7.6-6.1 0-3.5 3.2-5.9 7.9-5.9 4.7 0 8 2.2 8.3 5.9h-4.2c-.3-1.6-1.8-2.6-4.1-2.6-2.3 0-3.8.9-3.8 2.4 0 1.4 1.1 2.1 4.6 2.8 4.6.9 7.8 2.2 7.8 6.2 0 3.8-3.4 6.1-8.4 6.1Zm14.1-.3L85.3 5h4.3L99.1 25h-4.4l-2-4.6H82.2l-2 4.6h-4.4Zm8-8.2h7.3l-3.7-8-3.6 8Z" fill="#FFFFFF"/>
+            </svg>
+            <span class="nasa-footer__meta">National Aeronautics and Space Administration • Explore for All Humanity</span>
+          </div>
+          <nav class="nasa-footer__links" aria-label="Footer Navigation">
+            <a class="nasa-footer__link" href="index.html">Home</a>
+            <a class="nasa-footer__link" href="features.html">Features</a>
+            <a class="nasa-footer__link" href="projects.html">Projects</a>
+            <a class="nasa-footer__link" href="about-us.html">About Us</a>
+            <a class="nasa-footer__link" href="contact-us.html">Contact Us</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/js/nasa-data.js"></script>
+  <script src="assets/js/nasa-animations.js"></script>
+  <script src="assets/js/nasa-shell.js"></script>
+  <script src="assets/js/nasa-pages.js"></script>
+</body>
+</html>

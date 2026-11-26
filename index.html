@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASA — National Aeronautics and Space Administration</title>
+  <meta name="description" content="Explore NASA missions, live International Space Station views, deep-space discoveries, aeronautics breakthroughs, and Earth science." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/nasa-tokens.css" />
+  <link rel="stylesheet" href="assets/css/nasa-animations.css" />
+  <link rel="stylesheet" href="assets/css/nasa-layout.css" />
+  <link rel="stylesheet" href="assets/css/nasa-pages.css" />
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <!-- Orbital Scroll Progress Bar -->
+  <div class="orbital-scroll-progress" aria-hidden="true">
+    <div class="orbital-scroll-progress__bar" id="orbitalScrollProgress"></div>
+  </div>
+
+  <!-- Ambient Starfield Canvas -->
+  <canvas class="cosmic-starfield" id="cosmicStarfield" aria-hidden="true"></canvas>
+
+  <div class="site-wrapper">
+    <!-- Top Navigation -->
+    <header class="nasa-navbar" id="nasaNavbar">
+      <div class="nasa-container nasa-navbar__inner">
+        <a href="index.html" class="nasa-brand" aria-label="NASA Home">
+          <svg class="nasa-brand__svg" viewBox="0 0 112 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 25V5h4.2l11.6 14.5V5H24v20h-4.1L8.2 10.4V25H4Zm29.5 0L43 5h4.3L56.8 25h-4.4l-2-4.6H39.9l-2 4.6h-4.4Zm8-8.2h7.3L45.1 8.8l-3.6 8Zm20.2 8.5c-4.9 0-8.4-2.3-8.8-6.2h4.2c.4 1.9 2.2 2.9 4.7 2.9 2.6 0 4.2-1 4.2-2.6 0-1.5-1.2-2.2-4.8-2.9-4.5-.9-7.6-2.2-7.6-6.1 0-3.5 3.2-5.9 7.9-5.9 4.7 0 8 2.2 8.3 5.9h-4.2c-.3-1.6-1.8-2.6-4.1-2.6-2.3 0-3.8.9-3.8 2.4 0 1.4 1.1 2.1 4.6 2.8 4.6.9 7.8 2.2 7.8 6.2 0 3.8-3.4 6.1-8.4 6.1Zm14.1-.3L85.3 5h4.3L99.1 25h-4.4l-2-4.6H82.2l-2 4.6h-4.4Zm8-8.2h7.3l-3.7-8-3.6 8Z" fill="#FFFFFF"/>
+            <path d="M2 27.5C32 19 72 11 110 13.5" stroke="#60A5FA" stroke-width="1.3" stroke-linecap="round" opacity="0.65"/>
+          </svg>
+          <span class="nasa-brand__sub">Portal</span>
+        </a>
+
+        <div class="nasa-nav__right">
+          <nav aria-label="Primary Navigation">
+            <ul class="nasa-nav__list">
+              <li><a class="nasa-nav__link is-active" href="index.html">Home</a></li>
+              <li><a class="nasa-nav__link" href="features.html">Features</a></li>
+              <li><a class="nasa-nav__link" href="projects.html">Projects</a></li>
+              <li><a class="nasa-nav__link" href="about-us.html">About Us</a></li>
+              <li><a class="nasa-nav__link" href="contact-us.html">Contact Us</a></li>
+              <span class="nasa-nav__underline" id="navUnderline" aria-hidden="true"></span>
+            </ul>
+          </nav>
+
+          <div class="nasa-nav__actions">
+            <button type="button" class="nasa-icon-btn" data-open-search aria-label="Quick search portal">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+            <button type="button" class="nasa-icon-btn" data-share-page aria-label="Share this page">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </button>
+            <button type="button" class="nasa-mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="nasa-mobile-drawer" id="mobileNavDrawer">
+      <div class="nasa-mobile-drawer__links">
+        <a class="nasa-mobile-drawer__link is-active" href="index.html">Home</a>
+        <a class="nasa-mobile-drawer__link" href="features.html">Features</a>
+        <a class="nasa-mobile-drawer__link" href="projects.html">Projects</a>
+        <a class="nasa-mobile-drawer__link" href="about-us.html">About Us</a>
+        <a class="nasa-mobile-drawer__link" href="contact-us.html">Contact Us</a>
+      </div>
+    </div>
+
+    <main id="mainContent">
+      <!-- 1. HERO SECTION -->
+      <section class="nasa-hero">
+        <div class="nasa-hero__center">
+          <h1 class="nasa-hero__title hero-anim-title">Welcome home, Earthling</h1>
+
+          <div class="hero-search hero-anim-search" id="homeHeroSearch">
+            <div class="hero-search__bar">
+              <svg class="hero-search__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input
+                type="search"
+                id="heroSearchInput"
+                class="hero-search__input"
+                placeholder="Search missions, Artemis, Webb, Mars, or NASA stories..."
+                aria-label="Search NASA missions and stories"
+                autocomplete="off"
+              />
+              <button type="button" id="heroSearchClear" class="hero-search__clear" aria-label="Clear search">✕</button>
+            </div>
+            <div class="hero-search__dropdown" id="heroSearchDropdown" role="region" aria-label="Search results"></div>
+          </div>
+        </div>
+
+        <!-- Curved Earth Horizon Viewed from Orbit -->
+        <div class="nasa-hero__earth-wrap" aria-hidden="true">
+          <div class="nasa-hero__horizon-glow horizon-atmosphere-glow"></div>
+          <img
+            id="heroEarthImg"
+            class="nasa-hero__earth-img"
+            src="https://images-assets.nasa.gov/image/iss058e005282/iss058e005282~medium.jpg"
+            alt="Curved Earth horizon with glowing blue atmosphere viewed from the International Space Station"
+          />
+          <div class="nasa-hero__earth-vignette"></div>
+        </div>
+
+        <!-- Live ISS Watch Control with Sonar Pulse -->
+        <button type="button" class="hero-live-iss hero-anim-live" data-open-iss aria-label="Watch live International Space Station">
+          <span class="hero-live-iss__play iss-sonar-btn">
+            <span class="iss-sonar-ring" aria-hidden="true"></span>
+            <span class="iss-sonar-ring iss-sonar-ring--delay" aria-hidden="true"></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          </span>
+          <span class="hero-live-iss__text">
+            <span class="hero-live-iss__label">Watch live — International Space Station</span>
+            <span class="hero-live-iss__sub"><span class="status-beacon" style="width:6px;height:6px;"></span> Live Orbital Downlink</span>
+          </span>
+        </button>
+      </section>
+
+      <!-- 2. INTRO SECTION ("What Does NASA Do?") -->
+      <section class="nasa-intro">
+        <div class="nasa-container" data-reveal="fade-up">
+          <h2 class="nasa-intro__title">What Does NASA Do?</h2>
+          <p class="nasa-intro__copy">
+            NASA explores the unknown in air and space, innovates for the benefit of humanity, and inspires the world through discovery. From observing our changing planet from orbit to landing robotic explorers on Mars and peering back to cosmic dawn, we push the boundaries of science and human spaceflight.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. ASYMMETRIC 4-COLUMN BENTO NEWS & EVENTS GRID -->
+      <section class="bento-section" aria-label="Featured NASA Stories and Events">
+        <div class="nasa-container">
+          <div class="bento-grid">
+            <!-- Col 1 Tall Card (Rows 1-2) -->
+            <article class="bento-card bento-card--tall-left" tabindex="0" role="button" data-article-id="asteroid" data-reveal="fade-up" data-delay="60">
+              <img class="bento-card__img" src="https://images-assets.nasa.gov/image/PIA17480/PIA17480~medium.jpg" alt="Asteroid surface mosaic captured through robotic spacecraft eyes" />
+              <div class="bento-card__scrim"></div>
+              <div class="bento-card__content">
+                <span class="bento-card__tag">Solar System • OSIRIS-REx</span>
+                <h3 class="bento-card__title">NASA Scientists See Asteroid Through Robotic Eyes</h3>
+              </div>
+            </article>
+
+            <!-- Col 2 Top Card -->
+            <article class="bento-card bento-card--top-mid-1" tabindex="0" role="button" data-article-id="jetEngine" data-reveal="fade-up" data-delay="120">
+              <img class="bento-card__img" src="https://images-assets.nasa.gov/image/GRC-2025-C-07467/GRC-2025-C-07467~large.jpg" alt="NASA Glenn jet engine test facility" />
+              <div class="bento-card__scrim"></div>
+              <div class="bento-card__content">
+                <span class="bento-card__tag">Aeronautics</span>
+                <h3 class="bento-card__title">NASA Runs First-Ever Test of New Jet Engine Tech</h3>
+              </div>
+            </article>
+
+            <!-- Col 3 Top Card -->
+            <article class="bento-card bento-card--top-mid-2" tabindex="0" role="button" data-article-id="esaStation" data-reveal="fade-up" data-delay="180">
+              <img class="bento-card__img" src="https://images-assets.nasa.gov/image/iss074e0301064/iss074e0301064~large.jpg" alt="International Space Station orbiting Earth" />
+              <div class="bento-card__scrim"></div>
+              <div class="bento-card__content">
+                <span class="bento-card__tag">Space Station</span>
+                <h3 class="bento-card__title">NASA Administrator Statement on ESA's Commitment to Space Station</h3>
+              </div>
+            </article>
+
+            <!-- Col 2-3 Wide Split Middle Card -->
+            <article class="bento-card bento-card--wide-mid bento-card--split" tabindex="0" role="button" data-article-id="modernFigures" data-reveal="fade-up" data-delay="220">
+              <div class="bento-card__split-text">
+                <span class="bento-card__tag">Legacy &amp; STEM</span>
+                <h3 class="bento-card__title">Modern Figures: NASA's Past and Future</h3>
+                <p class="bento-card__excerpt">
+                  Honoring pioneering mathematicians like Katherine Johnson alongside today's aerospace innovators charting the path back to the Moon and Mars.
+                </p>
+              </div>
+              <div class="bento-card__split-media">
+                <img src="https://images-assets.nasa.gov/image/LRC-1966-B701_P-06717/LRC-1966-B701_P-06717~medium.jpg" alt="Katherine Johnson at NASA Langley Research Center" />
+              </div>
+            </article>
+
+            <!-- Col 4 Tall Events Sidebar Panel -->
+            <aside class="bento-events-panel" data-reveal="slide-right" data-delay="180" aria-label="NASA Events">
+              <div>
+                <div class="bento-events__header">
+                  <h3 class="bento-events__title">NASA events</h3>
+                  <span class="bento-events__badge">Schedule</span>
+                </div>
+                <div class="bento-events__list">
+                  <button type="button" class="bento-event-item" data-event-id="ev-iss-eva">
+                    <span class="bento-event-item__date">NOV 28 • 13:00 UTC</span>
+                    <span class="bento-event-item__desc">ISS Spacewalk — Power Channel &amp; iROSA array prep</span>
+                  </button>
+                  <button type="button" class="bento-event-item" data-event-id="ev-artemis-brief">
+                    <span class="bento-event-item__date">DEC 04 • 18:00 UTC</span>
+                    <span class="bento-event-item__desc">Artemis II Crew Readiness Briefing from Houston</span>
+                  </button>
+                  <button type="button" class="bento-event-item" data-event-id="ev-clps-launch">
+                    <span class="bento-event-item__date">DEC 12 • 06:15 UTC</span>
+                    <span class="bento-event-item__desc">CLPS Lunar South Pole Lander Launch</span>
+                  </button>
+                  <button type="button" class="bento-event-item" data-event-id="ev-jwst-symposium">
+                    <span class="bento-event-item__date">DEC 19 • 16:30 UTC</span>
+                    <span class="bento-event-item__desc">Webb Exoplanet Atmosphere Colloquium</span>
+                  </button>
+                  <button type="button" class="bento-event-item" data-event-id="ev-x59-flight">
+                    <span class="bento-event-item__date">JAN 09 • 15:00 UTC</span>
+                    <span class="bento-event-item__desc">X-59 Quiet Supersonic Flight Test</span>
+                  </button>
+                </div>
+              </div>
+              <div class="bento-events__footer">
+                <button type="button" class="bento-events__action" data-events-filter="Calendar">Calendar →</button>
+                <button type="button" class="bento-events__action" data-events-filter="Launches">Launches →</button>
+              </div>
+            </aside>
+
+            <!-- Bottom Row: 4 Equal Cards -->
+            <article class="bento-card" tabindex="0" role="button" data-article-id="timed" data-reveal="fade-up" data-delay="80">
+              <img class="bento-card__img" src="https://images-assets.nasa.gov/image/iss052e004998/iss052e004998~medium.jpg" alt="Earth upper atmosphere airglow from orbit" />
+              <div class="bento-card__scrim"></div>
+              <div class="bento-card__content">
+                <span class="bento-card__tag">Heliophysics</span>
+                <h3 class="bento-card__title">TIMED: 15 Years Exploring Our Interface to Space</h3>
+              </div>
+            </article>
+
+            <article class="bento-card" tabindex="0" role="button" data-article-id="cassini" data-reveal="fade-up" data-delay="140">
+              <img class="bento-card__img" src="https://images-assets.nasa.gov/image/PIA06193/PIA06193~medium.jpg" alt="Saturn and rings captured by Cassini" />
+              <div class="bento-card__scrim"></div>
+              <div class="bento-card__content">
+                <span class="bento-card__tag">Saturn • Cassini</span>
+                <h3 class="bento-card__title">Cassini Sends Back First Images from New Orbit</h3>
+              </div>
+            </article>
+
+            <article class="bento-card" tabindex="0" role="button" data-article-id="curiosity" data-reveal="fade-up" data-delay="200">
+              <img class="bento-card__img" src="https://images-assets.nasa.gov/image/PIA20602/PIA20602~medium.jpg" alt="Curiosity Mars rover self-portrait" />
+              <div class="bento-card__scrim"></div>
+              <div class="bento-card__content">
+                <span class="bento-card__tag">Mars Curiosity</span>
+                <h3 class="bento-card__title">Curiosity Rover Team Examining New Drill Hiatus</h3>
+              </div>
+            </article>
+
+            <article class="bento-card" tabindex="0" role="button" data-article-id="trailer" data-reveal="fade-up" data-delay="260">
+              <img class="bento-card__img" src="https://images-assets.nasa.gov/image/carina_nebula/carina_nebula~medium.jpg" alt="Cosmic Cliffs Carina Nebula space exploration video" />
+              <div class="bento-card__scrim"></div>
+              <div class="bento-video-play" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              </div>
+              <div class="bento-card__content">
+                <span class="bento-card__tag">NASA+ Video</span>
+                <h3 class="bento-card__title">Space Exploration Trailer</h3>
+              </div>
+            </article>
+          </div>
+
+          <!-- Expandable Extra Stories -->
+          <div class="more-stories-grid" id="moreStoriesGrid" aria-label="Additional NASA Stories"></div>
+
+          <button type="button" class="more-stories-bar btn-cosmic-sweep" id="moreStoriesBtn" aria-expanded="false">
+            <span>MORE STORIES</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 4. SOCIAL & IMAGE OF THE DAY (30% / 70% Split) -->
+      <section class="social-iotd-section" aria-label="Social Feed and Image of the Day">
+        <div class="nasa-container">
+          <div class="social-iotd-grid">
+            <!-- Left: Tweets by @NASA -->
+            <aside class="social-feed-card" data-reveal="slide-left">
+              <div class="social-feed__header">
+                <div class="social-feed__title">
+                  <span>Tweets by @NASA</span>
+                  <span class="social-feed__verified" title="Verified NASA Account">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 1.66 2.86-.42.84 2.77 2.51 1.48-.32 2.88 1.56 2.44-1.56 2.44.32 2.88-2.51 1.48-.84 2.77-2.86-.42L12 22l-2.39-1.66-2.86.42-.84-2.77-2.51-1.48.32-2.88L2.16 12l1.56-2.44-.32-2.88 2.51-1.48.84-2.77 2.86.42L12 2Zm-1.2 13.4l5.2-5.2-1.4-1.4-3.8 3.8-1.6-1.6-1.4 1.4 3 3Z"/></svg>
+                  </span>
+                </div>
+                <button type="button" class="social-feed__follow" id="followNasaBtn">Follow</button>
+              </div>
+              <div class="social-feed__list" id="nasaTweetList"></div>
+            </aside>
+
+            <!-- Right: IMAGE OF THE DAY -->
+            <div class="iotd-stage" data-reveal="slide-right">
+              <img
+                class="iotd-stage__img"
+                src="https://images-assets.nasa.gov/image/iss047e141893/iss047e141893~medium.jpg"
+                alt="Nighttime view from the International Space Station over the southern tip of Italy"
+              />
+              <div class="iotd-stage__scrim"></div>
+              <div class="iotd-stage__badge">IMAGE OF THE DAY</div>
+
+              <div class="iotd-overlay-card">
+                <div class="iotd-overlay-card__kicker">ISS EXPEDITION 49 • EARTH AT NIGHT</div>
+                <h3 class="iotd-overlay-card__title">Space Station Flight Over the Southern Tip of Italy</h3>
+                <p class="iotd-overlay-card__desc">
+                  Astronauts aboard the International Space Station captured the glowing coastal cities of Naples and Calabria beneath a docked spacecraft as Earth’s atmospheric airglow curved along the horizon.
+                </p>
+                <div class="iotd-overlay-card__footer">
+                  <button type="button" class="btn-nasa-ghost" id="iotdExpandBtn" style="padding:7px 13px;font-size:0.8rem;">
+                    Inspect View →
+                  </button>
+                  <div class="iotd-share-icons">
+                    <button type="button" class="nasa-icon-btn" data-share-page aria-label="Share Image of the Day" style="width:30px;height:30px;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. OUR MISSIONS CAROUSEL -->
+      <section class="missions-carousel-section" aria-label="Our Missions">
+        <div class="nasa-container">
+          <div class="section-heading-center" data-reveal="fade-up">
+            <h2>Our missions</h2>
+            <p>Flagship spacecraft, deep-space observatories, and lunar expeditions expanding humanity’s reach across the cosmos.</p>
+          </div>
+
+          <div class="missions-slider-wrap" data-reveal="zoom-in">
+            <button type="button" class="carousel-nav-btn carousel-btn--prev" id="missionsPrevBtn" aria-label="Previous mission">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <div class="missions-viewport">
+              <div class="missions-track" id="missionsTrack"></div>
+            </div>
+
+            <button type="button" class="carousel-nav-btn carousel-btn--next" id="missionsNextBtn" aria-label="Next mission">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <div style="text-align:center;margin-top:26px;">
+            <a href="projects.html" class="btn-nasa-ghost btn-cosmic-sweep">Explore Full Mission Directory →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 6. NIGHT ROCKET LAUNCH FOOTER -->
+    <footer class="nasa-footer">
+      <img
+        class="nasa-footer__bg"
+        src="https://images-assets.nasa.gov/image/NHQ202211160208/NHQ202211160208~medium.jpg"
+        alt="Night rocket launch illuminating exhaust clouds at Kennedy Space Center"
+        loading="lazy"
+      />
+      <div class="nasa-footer__overlay"></div>
+      <div class="nasa-footer__plume-glow launch-plume-glow" aria-hidden="true"></div>
+      <canvas class="nasa-footer__embers" id="footerEmbersCanvas" aria-hidden="true"></canvas>
+
+      <div class="nasa-footer__bar">
+        <div class="nasa-container nasa-footer__bar-inner">
+          <div class="nasa-footer__brand-group">
+            <svg class="nasa-brand__svg" style="height:19px;" viewBox="0 0 112 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 25V5h4.2l11.6 14.5V5H24v20h-4.1L8.2 10.4V25H4Zm29.5 0L43 5h4.3L56.8 25h-4.4l-2-4.6H39.9l-2 4.6h-4.4Zm8-8.2h7.3L45.1 8.8l-3.6 8Zm20.2 8.5c-4.9 0-8.4-2.3-8.8-6.2h4.2c.4 1.9 2.2 2.9 4.7 2.9 2.6 0 4.2-1 4.2-2.6 0-1.5-1.2-2.2-4.8-2.9-4.5-.9-7.6-2.2-7.6-6.1 0-3.5 3.2-5.9 7.9-5.9 4.7 0 8 2.2 8.3 5.9h-4.2c-.3-1.6-1.8-2.6-4.1-2.6-2.3 0-3.8.9-3.8 2.4 0 1.4 1.1 2.1 4.6 2.8 4.6.9 7.8 2.2 7.8 6.2 0 3.8-3.4 6.1-8.4 6.1Zm14.1-.3L85.3 5h4.3L99.1 25h-4.4l-2-4.6H82.2l-2 4.6h-4.4Zm8-8.2h7.3l-3.7-8-3.6 8Z" fill="#FFFFFF"/>
+            </svg>
+            <span class="nasa-footer__meta">National Aeronautics and Space Administration • Explore for All Humanity</span>
+          </div>
+          <nav class="nasa-footer__links" aria-label="Footer Navigation">
+            <a class="nasa-footer__link" href="index.html">Home</a>
+            <a class="nasa-footer__link" href="features.html">Features</a>
+            <a class="nasa-footer__link" href="projects.html">Projects</a>
+            <a class="nasa-footer__link" href="about-us.html">About Us</a>
+            <a class="nasa-footer__link" href="contact-us.html">Contact Us</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/js/nasa-data.js"></script>
+  <script src="assets/js/nasa-animations.js"></script>
+  <script src="assets/js/nasa-shell.js"></script>
+  <script src="assets/js/nasa-pages.js"></script>
+</body>
+</html>
